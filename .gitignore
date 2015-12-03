@@ -1,2 +1,2 @@
-vim/.vim/bundle/swap
-vim/.vim/bundle/*
+/vim/.vim/swap
+/vim/.vim/bundle/*
