@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/sarojk/Google Drive/Code/javascript'
+let g:netrw_dirhist_2='/Users/sarojk/Google Drive/Code/javascript/edx_mongo_node'
+let g:netrw_dirhist_3='/Users/sarojk/Google Drive/Code/javascript/edx_mongo_node/chapter-3'
+let g:netrw_dirhist_4='/Users/sarojk/Google Drive/Code/javascript/edx_mongo_node/chapter-3/3-examples'
