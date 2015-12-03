@@ -1,0 +1,21 @@
+# The file holds cron jobs.
+# This file is manually created by sarojk.
+
+# Any modification to the file should be updated to system crontab.
+#   (cli-prompt)$ crontab <path/to/this/file>
+# Caution: Editing cron files using vi/vim seem to result in error.
+
+# Format for a cron job is as show below.
+#   MIN HOUR DOM MON DOW CMD
+#       where,
+#           DOM = Day of Month
+#           DOW = Day of Week
+#           CMD = Command to be executed
+# Eg: 
+#   30 22 * * * say This is a cron job 
+
+# List of cron jobs
+#00 22 * * * open /Applications/qBittorrent.app
+#00 05 * * * pkill qbittorrent
+
+
