@@ -48,6 +48,7 @@ declare -a brew_cask_apps=(
   'iterm2' 
   'google-chrome' 
   'google-drive' 
+  'flux'
   'filezilla' 
   'etrecheck'
   'yujitach-menumeters' 
