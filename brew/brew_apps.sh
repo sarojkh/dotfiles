@@ -46,24 +46,26 @@ declare -a brew_apps=(
 
 declare -a brew_cask_apps=(
   'iterm2' 
-  'filezilla' 
-  'etrecheck'
-  'menumeters' 
-  'the-unarchiver' 
-  'qbittorrent' 
   'google-chrome' 
   'google-drive' 
+  'filezilla' 
+  'etrecheck'
+  'yujitach-menumeters' 
+  'the-unarchiver' 
+  'transmission' 
   'firefox' 
   'skype' 
-  'microsoft-office'
   'vlc' 
   'mplayerx' 
   'android-file-transfer' 
   'node' 
-  'java' 
   'unetbootin'  
   'sublime-text' 
   'appcleaner'
+  'viber'
+  'java' 
+  'angry-ip-scanner'
+  'microsoft-office'
   );
 
 # Installing 'brew' if not installed already...
