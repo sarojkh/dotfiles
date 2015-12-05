@@ -200,10 +200,6 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
-echo "Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window"
-sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
-
-echo ""
 echo "Check for software updates daily, not just once per week"
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
@@ -227,6 +223,31 @@ fi
 #   sudo defaults write /Library/Preferences/.GlobalPreferences.plist _HIEnableThemeSwitchHotKey -bool true
 # fi
 
+###############################################################################
+# Login window
+###############################################################################
+
+echo ""
+echo "Display login window as: Name and password."
+sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWFULLNAME -bool false
+
+echo ""
+echo "Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window"
+sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
+
+echo ""
+echo "Enable trackpad tap to click for this user and for the login screen"
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+###############################################################################
+# Firewall
+###############################################################################
+
+echo ""
+echo "Enable ALF(Application Layer Firewall)"
+sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
 
 ###############################################################################
 # General Power and Performance modifications
@@ -286,13 +307,6 @@ fi
 # echo "Increasing sound quality for Bluetooth headphones/headsets"
 # defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
-
-echo ""
-echo "Enable trackpad tap to click for this user and for the login screen"
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-
 echo ""
 echo "Enabling full keyboard access for all controls (enable Tab in modal dialogs, menu windows, etc.)"
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
@@ -303,7 +317,7 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 echo ""
 echo "Setting a blazingly fast keyboard repeat rate"
-defaults write NSGlobalDomain KeyRepeat -int 0
+defaults write NSGlobalDomain KeyRepeat -int 3
 
 echo ""
 echo "Disable auto-correct? (y/n)"
@@ -312,7 +326,6 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 fi
 
-#TODO: Confirm that the number is set to the highest
 echo ""
 echo "Setting trackpad & mouse speed to a reasonable number"
 defaults write -g com.apple.trackpad.scaling 3
@@ -340,10 +353,6 @@ fi
 # Screen
 ###############################################################################
 
-echo ""
-echo "Requiring password immediately after sleep or screen saver begins"
-defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 echo ""
 echo "Where do you want screenshots to be stored? (hit ENTER if you want ~/Desktop as default)"
@@ -410,13 +419,6 @@ echo "Show hidden files in Finder by default? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   defaults write com.apple.Finder AppleShowAllFiles -bool true
-fi
-
-echo ""
-echo "Show dotfiles in Finder by default? (y/n)"
-read -r response
-if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  defaults write com.apple.finder AppleShowAllFiles TRUE
 fi
 
 echo ""
@@ -537,8 +539,8 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
-echo "Setting the icon size of Dock items to 20 pixels for optimal size/screen-realestate"
-defaults write com.apple.dock tilesize -int 20 
+echo "Setting the icon size of Dock items to 16 pixels for optimal size/screen-realestate"
+defaults write com.apple.dock tilesize -int 16 
 
 echo ""
 echo "Set orientation of Dock ? (bottom/left/right)"
@@ -595,6 +597,11 @@ defaults write com.apple.dock showhidden -bool true
 defaults write com.apple.dock wvous-br-corner -int 10
 defaults write com.apple.dock wvous-br-modifier -int 0
 
+echo ""
+echo "Requiring password immediately after sleep or screen saver begins"
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
+
 ###############################################################################
 # Chrome, Safari, & WebKit
 ###############################################################################
@@ -638,7 +645,6 @@ echo ""
 echo "Adding a context menu item for showing the Web Inspector in web views"
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
-#TODO: Enable 'Warn before qutting' by default in Google Chrome
 
 echo ""
 echo "Disabling the annoying backswipe in Chrome"
@@ -648,7 +654,7 @@ defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
 echo ""
 echo "Using the system-native print preview dialog in Chrome"
 defaults write com.google.Chrome DisablePrintPreview -bool true
-defaults write com.google.Chrome.canary DisablePrintPreview -bool true
+#defaults write com.google.Chrome.canary DisablePrintPreview -bool true
 
 
 ###############################################################################
