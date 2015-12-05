@@ -76,54 +76,18 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $COMPUTER_NAME
 fi
 
-# echo ""
-# echo "Hide the Time Machine, Volume, User, and Bluetooth icons?  (y/n)"
-# read -r response
-# if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-#   # Get the system Hardware UUID and use it for the next menubar stuff
-#   for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
-#     defaults write "${domain}" dontAutoLoad -array \
-#       "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
-#       "/System/Library/CoreServices/Menu Extras/Volume.menu" \
-#       "/System/Library/CoreServices/Menu Extras/User.menu"
-#   done
-#
-#   defaults write com.apple.systemuiserver menuExtras -array \
-#     "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
-#     "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
-#     "/System/Library/CoreServices/Menu Extras/Battery.menu" \
-#     "/System/Library/CoreServices/Menu Extras/Clock.menu"
-# fi
-
-echo ""
-echo "Hide Bluetooth, TimeMachine, and User icons from Menu bar."
-for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
-  defaults write "${domain}" dontAutoLoad -array \
-    "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
-    "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
-    "/System/Library/CoreServices/Menu Extras/User.menu"
-done
-
-echo ""
-echo "Show Volume,Airport, Battery, and Clock  icon in Menu bar."
-defaults write com.apple.systemuiserver menuExtras -array \
-  "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
-  "/System/Library/CoreServices/Menu Extras/Volume.menu" \
-  "/System/Library/CoreServices/Menu Extras/Battery.menu" \
-  "/System/Library/CoreServices/Menu Extras/Clock.menu"
-
-echo ""
-echo "Hide the Spotlight icon? (y/n)"
-read -r response
-if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
-fi
+#echo ""
+#echo "Hide the Spotlight icon? (y/n)"
+#read -r response
+#if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+#  sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
+#fi
 
 echo ""
 echo "Disable Spotlight indexing for any volume that gets mounted and has not yet been indexed before? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  echo 'Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.'
+  # Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.
   sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
 fi
 
@@ -169,13 +133,49 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   sudo mdutil -E / > /dev/null
 fi
 
+# echo ""
+# echo "Hide the Time Machine, Volume, User, and Bluetooth icons?  (y/n)"
+# read -r response
+# if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+#   # Get the system Hardware UUID and use it for the next menubar stuff
+#   for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
+#     defaults write "${domain}" dontAutoLoad -array \
+#       "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
+#       "/System/Library/CoreServices/Menu Extras/Volume.menu" \
+#       "/System/Library/CoreServices/Menu Extras/User.menu"
+#   done
+#
+#   defaults write com.apple.systemuiserver menuExtras -array \
+#     "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
+#     "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
+#     "/System/Library/CoreServices/Menu Extras/Battery.menu" \
+#     "/System/Library/CoreServices/Menu Extras/Clock.menu"
+# fi
+
+echo ""
+echo "Hide Bluetooth, TimeMachine, and User icons from Menu bar."
+for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
+  defaults write "${domain}" dontAutoLoad -array \
+    "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
+    "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
+    "/System/Library/CoreServices/Menu Extras/User.menu"
+done
+
+echo ""
+echo "Show Volume, Airport, Battery, and Clock icons in Menu bar."
+defaults write com.apple.systemuiserver menuExtras -array \
+  "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
+  "/System/Library/CoreServices/Menu Extras/Volume.menu" \
+  "/System/Library/CoreServices/Menu Extras/Battery.menu" \
+  "/System/Library/CoreServices/Menu Extras/Clock.menu"
+
 echo ""
 echo "Disable the sound effects on boot"
 sudo nvram SystemAudioVolume=" "
 
 echo ""
-echo "Set sidebar icon size to medium"
-defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
+echo "Set sidebar icon size to small"
+defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 1
 
 echo ""
 echo "Expanding the save panel by default"
@@ -315,8 +315,8 @@ fi
 #TODO: Confirm that the number is set to the highest
 echo ""
 echo "Setting trackpad & mouse speed to a reasonable number"
-defaults write -g com.apple.trackpad.scaling 2
-defaults write -g com.apple.mouse.scaling 2.5
+defaults write -g com.apple.trackpad.scaling 3
+defaults write -g com.apple.mouse.scaling 3
 
 # echo ""
 # echo "Turn off keyboard illumination when computer is not used for 5 minutes"
@@ -392,10 +392,10 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 2
 ###############################################################################
 
 echo ""
-echo " Finder uses which of the four views? (icnv/Nlsv/clmv/Flwv)"
+echo "Finder uses which of the four views? (icnv/Nlsv/clmv/Flwv)"
 read -r response
 if [[ $response =~ ^(icnv|Nlsv|clmv|Flwv)$ ]]; then
-  defaults write com.apple.finder FXPreferredViewStyle -string "$response"
+  defaults write com.apple.Finder FXPreferredViewStyle -string "$response"
 fi
 
 echo ""
@@ -441,7 +441,7 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
-:"Display full POSIX path as Finder window title? (y/n)"
+echo "Display full POSIX path as Finder window title? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
@@ -454,12 +454,6 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 fi
 
-echo ""
-echo "Use column view in all Finder windows by default? (y/n)"
-read -r response
-if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  defaults write com.apple.finder FXPreferredViewStyle Clmv
-fi
 
 echo ""
 echo "Avoid creation of .DS_Store files on network volumes? (y/n)"
@@ -543,14 +537,14 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
-echo "Setting the icon size of Dock items to 24 pixels for optimal size/screen-realestate"
-defaults write com.apple.dock tilesize -int 24 
+echo "Setting the icon size of Dock items to 20 pixels for optimal size/screen-realestate"
+defaults write com.apple.dock tilesize -int 20 
 
 echo ""
 echo "Set orientation of Dock ? (bottom/left/right)"
 read -r response
 if [[ $response =~ ^(bottom|left|right)$ ]]; then
-  defaults write com.apple.dock tilesize -string "$response"
+  defaults write com.apple.dock orientation -string "$response"
 fi
 
 echo ""
@@ -785,7 +779,7 @@ fi
 # Sublime Text
 ###############################################################################
 echo ""
-echo "Do you use Sublime Text 3 as your editor of choice, and is it installed?"
+echo "Do you use Sublime Text 3 as your editor of choice, and is it installed? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   # Installing from homebrew cask does the following for you!
