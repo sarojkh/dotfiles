@@ -96,6 +96,7 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
     "/System/Library/CoreServices/Menu Extras/Clock.menu"
 fi
 
+
 echo ""
 echo "Hide the Spotlight icon? (y/n)"
 read -r response
@@ -152,6 +153,14 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   # Rebuild the index from scratch
   sudo mdutil -E / > /dev/null
 fi
+
+echo ""
+echo "Disable the sound effects on boot"
+sudo nvram SystemAudioVolume=" "
+
+echo ""
+echo "Set sidebar icon size to medium"
+defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
 
 echo ""
 echo "Expanding the save panel by default"
@@ -262,6 +271,13 @@ fi
 # echo "Increasing sound quality for Bluetooth headphones/headsets"
 # defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
+
+echo ""
+echo "Enable trackpad tap to click for this user and for the login screen"
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
 echo ""
 echo "Enabling full keyboard access for all controls (enable Tab in modal dialogs, menu windows, etc.)"
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
@@ -352,14 +368,20 @@ echo ""
 echo "Enabling subpixel font rendering on non-Apple LCDs"
 defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
-#TODO
-echo ""
-echo "Enabling HiDPI display modes (requires restart)"
-sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
+# echo ""
+# echo "Enabling HiDPI display modes (requires restart)"
+# sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 
 ###############################################################################
 # Finder
 ###############################################################################
+
+echo ""
+echo " Finder uses which of the four views? (icnv/Nlsv/clmv/Flwv)"
+read -r response
+if [[ $response =~ ^(icnv|Nlsv|clmv|Flwv)$ ]]; then
+  defaults write com.apple.finder FXPreferredViewStyle -string "$response"
+fi
 
 echo ""
 echo "Show icons for hard drives, servers, and removable media on the desktop? (y/n)"
@@ -397,11 +419,18 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
-echo "Display full POSIX path as Finder window title? (y/n)"
+echo "Show path bar in Finder by default? (y/n)"
+read -r response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  defaults write com.apple.finder ShowPathbar -bool true
+fi
+
+echo ""
+:"Display full POSIX path as Finder window title? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
-fi
+fi 
 
 echo ""
 echo "Disable the warning when changing a file extension? (y/n)"
@@ -434,6 +463,12 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
+echo "Disable the warning before emptying the Trash?(y/n)"
+read -r response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  defaults write com.apple.finder WarnOnEmptyTrash -bool false
+fi
+
 echo "Allowing text selection in Quick Look/Preview in Finder by default"
 defaults write com.apple.finder QLEnableTextSelection -bool true
 
@@ -482,7 +517,7 @@ fi
 
 
 ###############################################################################
-# Dock & Mission Control
+# Dock, Mission Control, Dashboard, Hot Corners
 ###############################################################################
 
 echo "Wipe all (default) app icons from the Dock? (y/n)"
@@ -517,6 +552,39 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   defaults write com.apple.dock autohide-time-modifier -float 0
 fi
 
+echo ""
+echo "Disable Dashboard"
+defaults write com.apple.dashboard mcx-disabled -bool true
+
+echo ""
+echo "Don’t show Dashboard as a Space"
+defaults write com.apple.dock dashboard-in-overlay -bool true
+
+echo ""
+echo "Make Dock icons of hidden applications translucent"
+defaults write com.apple.dock showhidden -bool true
+
+# Hot corners
+# Possible values:
+#  0: no-op
+#  2: Mission Control
+#  3: Show application windows
+#  4: Desktop
+#  5: Start screen saver
+#  6: Disable screen saver
+#  7: Dashboard
+# 10: Put display to sleep
+# 11: Launchpad
+# 12: Notification Center
+# Top left screen corner → Mission Control
+# defaults write com.apple.dock wvous-tl-corner -int 2
+# defaults write com.apple.dock wvous-tl-modifier -int 0
+# Top right screen corner → Desktop
+# defaults write com.apple.dock wvous-tr-corner -int 4
+# defaults write com.apple.dock wvous-tr-modifier -int 0
+# Bottom right screen corner → Start screen saver
+defaults write com.apple.dock wvous-br-corner -int 5
+defaults write com.apple.dock wvous-br-modifier -int 0
 
 ###############################################################################
 # Chrome, Safari, & WebKit
@@ -561,12 +629,12 @@ echo ""
 echo "Adding a context menu item for showing the Web Inspector in web views"
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
-#TODO: Enable 'Warn before qutting' in Chrome
+#TODO: Enable 'Warn before qutting' by default in Google Chrome
 
 echo ""
 echo "Disabling the annoying backswipe in Chrome"
 defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
-defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -bool false
+#defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -bool false
 
 echo ""
 echo "Using the system-native print preview dialog in Chrome"
@@ -584,7 +652,7 @@ defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 
 
 ###############################################################################
-# Terminal
+# Terminal / iTerm2
 ###############################################################################
 
 echo ""
@@ -592,6 +660,12 @@ echo "Enabling UTF-8 ONLY in Terminal.app and setting the Pro theme by default"
 defaults write com.apple.terminal StringEncodings -array 4
 defaults write com.apple.Terminal "Default Window Settings" -string "Pro"
 defaults write com.apple.Terminal "Startup Window Settings" -string "Pro"
+
+echo "Install the Solarized Dark theme for iTerm"
+open "${HOME}/init/Solarized Dark.itermcolors"
+
+echo "Don’t display the annoying prompt when quitting iTerm"
+defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
 
 ###############################################################################
