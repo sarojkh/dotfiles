@@ -2,5 +2,5 @@
 
 alias open_links="~/Google\ Drive/Code/python/scripts/open_links.py"
 alias gt_code_folder="cd ~/Google\ Drive/Code/"
-alias brew_apps="~/Google\ Drive/dotfiles/brew_apps.sh"
+alias brew_apps="~/Google\ Drive/dotfiles/brew/brew_apps.sh"
 
