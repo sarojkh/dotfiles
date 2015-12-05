@@ -76,26 +76,41 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $COMPUTER_NAME
 fi
 
-#TODO: Show Volume among those enlisted below
+# echo ""
+# echo "Hide the Time Machine, Volume, User, and Bluetooth icons?  (y/n)"
+# read -r response
+# if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+#   # Get the system Hardware UUID and use it for the next menubar stuff
+#   for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
+#     defaults write "${domain}" dontAutoLoad -array \
+#       "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
+#       "/System/Library/CoreServices/Menu Extras/Volume.menu" \
+#       "/System/Library/CoreServices/Menu Extras/User.menu"
+#   done
+#
+#   defaults write com.apple.systemuiserver menuExtras -array \
+#     "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
+#     "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
+#     "/System/Library/CoreServices/Menu Extras/Battery.menu" \
+#     "/System/Library/CoreServices/Menu Extras/Clock.menu"
+# fi
+
 echo ""
-echo "Hide the Time Machine, Volume, User, and Bluetooth icons?  (y/n)"
-read -r response
-if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  # Get the system Hardware UUID and use it for the next menubar stuff
-  for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
-    defaults write "${domain}" dontAutoLoad -array \
-      "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
-      "/System/Library/CoreServices/Menu Extras/Volume.menu" \
-      "/System/Library/CoreServices/Menu Extras/User.menu"
-  done
-
-  defaults write com.apple.systemuiserver menuExtras -array \
+echo "Hide Bluetooth, TimeMachine, and User icons from Menu bar."
+for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
+  defaults write "${domain}" dontAutoLoad -array \
     "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
-    "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
-    "/System/Library/CoreServices/Menu Extras/Battery.menu" \
-    "/System/Library/CoreServices/Menu Extras/Clock.menu"
-fi
+    "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
+    "/System/Library/CoreServices/Menu Extras/User.menu"
+done
 
+echo ""
+echo "Show Volume,Airport, Battery, and Clock  icon in Menu bar."
+defaults write com.apple.systemuiserver menuExtras -array \
+  "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
+  "/System/Library/CoreServices/Menu Extras/Volume.menu" \
+  "/System/Library/CoreServices/Menu Extras/Battery.menu" \
+  "/System/Library/CoreServices/Menu Extras/Clock.menu"
 
 echo ""
 echo "Hide the Spotlight icon? (y/n)"
