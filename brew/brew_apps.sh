@@ -66,6 +66,7 @@ declare -a brew_cask_apps=(
   'viber'
   'java' 
   'angry-ip-scanner'
+  'virtualbox'
   'microsoft-office'
   );
 
