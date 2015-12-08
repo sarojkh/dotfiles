@@ -2,8 +2,8 @@
 
 # Infinite history size
 # See http://askubuntu.com/questions/307541/how-to-change-history-size-for-ever
-HISTSIZE=-1;
-HISTFILESIZE=-1;
+# HISTSIZE=-1;
+# HISTFILESIZE=-1;
 
 #added to enable 'rbenv' shims and autocompletion:
 if which rbenv > /dev/null; then 
