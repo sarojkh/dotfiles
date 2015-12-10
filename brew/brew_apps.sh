@@ -58,7 +58,6 @@ declare -a brew_cask_apps=(
   'skype' 
   'slack' 
   'vlc' 
-  'mplayerx' 
   'android-file-transfer' 
   'node' 
   'unetbootin'  
