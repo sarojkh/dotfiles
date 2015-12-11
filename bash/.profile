@@ -1,9 +1,9 @@
 # This file is manually created.
 
 # Infinite history size
-# See http://askubuntu.com/questions/307541/how-to-change-history-size-for-ever
-# HISTSIZE=-1;
-# HISTFILESIZE=-1;
+# See http://stackoverflow.com/questions/9457233/unlimited-bash-history
+HISTSIZE=
+HISTFILESIZE=
 
 #added to enable 'rbenv' shims and autocompletion:
 if which rbenv > /dev/null; then 
