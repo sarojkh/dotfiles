@@ -48,6 +48,8 @@ declare -a brew_cask_apps=(
   'iterm2' 
   'google-chrome' 
   'google-drive' 
+  'google-photos-backup' 
+  'picasa' 
   'flux'
   'filezilla' 
   'etrecheck'
