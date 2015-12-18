@@ -17,6 +17,6 @@
 # List of cron jobs
  00 22 * * * open /Applications/qBittorrent.app
  00 05 * * * pkill qbittorrent
-
+ 00 * * * *  sh "/Users/sarojk/Google Drive/Danfe/LekhaPal/Mindmap/daily backups/backup.sh" > /dev/null 2>&1
 
 
