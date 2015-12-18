@@ -1,4 +1,4 @@
 !vim/.vimrc
 vim/*
-cron/.cron_private
+cron/*
 brew/homebrew_github_api_token.sh
