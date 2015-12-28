@@ -46,6 +46,7 @@ declare -a brew_apps=(
 
 declare -a brew_cask_apps=(
   'iterm2' 
+  'atom'
   'google-chrome' 
   'google-drive' 
   'google-photos-backup' 
@@ -63,7 +64,6 @@ declare -a brew_cask_apps=(
   'android-file-transfer' 
   'node' 
   'unetbootin'  
-  'sublime-text' 
   'appcleaner'
   'viber'
   'java' 
