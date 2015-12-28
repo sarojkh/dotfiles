@@ -34,11 +34,13 @@ function script_interrupted_by_user() {
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 declare -a brew_apps=(
+  'bash'
+  'git'
   'wget'
   'tmux'
   'rbenv'
   'tree'
-  'git'
+  'grc'
   'macvim --with-override-system-vim'
   'caskroom/cask/brew-cask' 
   'mongodb'
