@@ -9,6 +9,7 @@ ln -s "$dotfile_root/vim/.vimrc" ~/.vimrc
 ln -s "$dotfile_root/vim/.vim/" ~/.vim
 
 ln -s "$dotfile_root/bash/.bash_profile" ~/.bash_profile
+ln -s "$dotfile_root/bash/.bashrc" ~/.bashrc
 ln -s "$dotfile_root/bash/.aliases" ~/.aliases
 ln -s "$dotfile_root/bash/.bash_prompt" ~/.bash_prompt
 
