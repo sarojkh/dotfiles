@@ -1,1 +1,1 @@
-Repository for dotfiles like .profile, .vimrc, etc.
+Repository for dotfiles like .bash_profile, .vimrc, etc.
