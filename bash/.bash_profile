@@ -61,6 +61,7 @@ $(boot2docker shellinit 2> /dev/null)
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 source ~/.aliases
+source ~/.bashrc
 source ~/.bash_prompt
 source ~/Google\ Drive/dotfiles/brew/homebrew_github_api_token.sh
 
