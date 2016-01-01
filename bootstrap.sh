@@ -22,4 +22,3 @@ mkdir ~/.vim/undo
 
 # Execute ~/.bash_profile
 source ~/.bash_profile
-
