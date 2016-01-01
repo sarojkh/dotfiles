@@ -18,6 +18,8 @@ Plugin 'kien/ctrlp.vim'         "CtrlP FuzzyFinder
 Plugin 'vim-scripts/ZoomWin'    "Set full-width to current split
 Plugin 'scrooloose/syntastic'   "Syntax checking plugin
 Plugin 'vim-scripts/tComment'   "Toggle comment
+Plugin 'bling/vim-airline'      "Status line
+Plugin 'tpope/vim-fugitive'     "Git integration
 
 " Keep Plugin commands between vundle#begin/end.
 
@@ -156,7 +158,16 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuration for vim-airline
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline#extensions#tabline#enabled = 1    "Existing buffers listed at top
+let g:airline#extensions#branch#enabled = 1     "Fugitive support
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Notes (by sarojk)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "to get rid of 'no buftype set' error, 
 ":set buftype:
+"
+"to load updated .vimrc without restarting
+":so $MYVIMRC
