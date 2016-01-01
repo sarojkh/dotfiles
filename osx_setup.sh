@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# The following code has been heavily influenced by 
+# The following code has been heavily influenced by
 # https://gist.github.com/brandonb927/3195465
 # which has used configs taken from the various places
 # on the web, most from here
@@ -447,7 +447,7 @@ echo "Display full POSIX path as Finder window title? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
-fi 
+fi
 
 echo ""
 echo "Disable the warning when changing a file extension? (y/n)"
@@ -540,7 +540,7 @@ fi
 
 echo ""
 echo "Setting the icon size of Dock items to 16 pixels for optimal size/screen-realestate"
-defaults write com.apple.dock tilesize -int 16 
+defaults write com.apple.dock tilesize -int 16
 
 echo ""
 echo "Set orientation of Dock ? (bottom/left/right)"
