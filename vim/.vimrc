@@ -49,7 +49,7 @@ filetype plugin indent on    " required
 set t_Co=256              " enable 256-color mode.
 syntax enable             " enable syntax highlighting (previously syntax on).
 colorscheme molokai       " set colorscheme
-set guifont=Monaco:h12    " set font for MacVIM. vim in terminal uses terminal font
+set guifont=Monaco:h14    " set font for MacVIM. vim in terminal uses terminal font
 
 " Highlight characters that go over 80 columns (by drawing a border on the 81st)
 if exists('+colorcolumn')
