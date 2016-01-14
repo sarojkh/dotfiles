@@ -20,6 +20,12 @@ Plugin 'scrooloose/syntastic'   "Syntax checking plugin
 Plugin 'vim-scripts/tComment'   "Toggle comment
 Plugin 'bling/vim-airline'      "Status line
 Plugin 'tpope/vim-fugitive'     "Git integration
+Plugin 'scrooloose/nerdtree'    "NERDTree
+Plugin 'dhruvasagar/vim-vinegar' "Open NERDTree like NETrw with '-' key. 
+Plugin 'terryma/vim-multiple-cursors' "Multiple cursors
+Plugin 'mattn/emmet-vim'        "Abbreviation expansion(auto-expansion)
+Plugin 'nathanaelkane/vim-indent-guides' "Visually display indent levels
+Plugin 'godlygeek/tabular'      "Line up texts that match same pattern
 
 " Keep Plugin commands between vundle#begin/end.
 
@@ -64,7 +70,7 @@ endif
 " Netrw Explorer
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:netrw_liststyle=3   " open Netrw in Tree mode by default
+" let g:netrw_liststyle=3   " open Netrw in Tree mode by default
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim UI                                                                 "
@@ -80,6 +86,7 @@ set ignorecase            " Make searches case-insensitive.
 set ruler                 " Always show info along bottom.
 set showmatch             " Show Matching Parenthesis
 set visualbell            " Don't beep; flash the screen instead.
+let g:indent_guides_enable_on_vim_startup = 1 "Start indent_guide at startup
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text Formatting/Layout                                                 "
@@ -162,6 +169,12 @@ let g:syntastic_check_on_wq = 0
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline#extensions#tabline#enabled = 1    "Existing buffers listed at top
 let g:airline#extensions#branch#enabled = 1     "Fugitive support
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuration for NERDTree
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"autocmd vimenter * NERDTree         "start NERDTree at startup
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Notes (by sarojk)
