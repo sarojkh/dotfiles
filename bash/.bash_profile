@@ -55,6 +55,11 @@ fi
 # added to enable configure boot2docker shellinit at terminal startup
 $(boot2docker shellinit 2> /dev/null)
 
+# added for bash-completion to work well
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+
 # Put the symlinks of apps installed by brew-cask in '/Applications/' instead of
 # default location of '~/Applications/'.
 # For more info look in 'man brew-cask'.
