@@ -41,6 +41,7 @@ declare -a brew_apps=(
   'rbenv'
   'tree'
   'grc'
+  'bash-completion'
   'macvim --with-override-system-vim'
   'caskroom/cask/brew-cask' 
   'mongodb'
