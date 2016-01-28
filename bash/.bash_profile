@@ -1,13 +1,18 @@
 
-# Note: 
+# Note:
 # From http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html :
 #   Unlike *nix system's bash, which loads .bash_profile for login shell, and
-#   .bashrc for non-login shell(new terminal window), Mac OS X’s Terminal.app 
-#   runs a login shell by default for both login shell and non-login shell(new 
-#   terminal window), calling .bash_profile instead of .bashrc. 
+#   .bashrc for non-login shell(new terminal window), Mac OS X’s Terminal.app
+#   runs a login shell by default for both login shell and non-login shell(new
+#   terminal window), calling .bash_profile instead of .bashrc.
 
 # Shoutouts:
 # -https://github.com/paulirish/dotfiles
+
+source ~/.aliases
+source ~/.bashrc
+source ~/.bash_prompt
+source ~/Google\ Drive/dotfiles/brew/homebrew_github_api_token.sh
 
 # generic colouriser
 GRC=`which grc`
@@ -46,10 +51,10 @@ which shopt > /dev/null && shopt -s histappend  # append to history, don't overw
 # Save and reload the history after each command finishes
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # ^ the only downside with this is [up] on the readline will go over all history not just this bash session.
- 
+
 #added to enable 'rbenv' shims and autocompletion:
-if which rbenv > /dev/null; then 
-  eval "$(rbenv init -)"; 
+if which rbenv > /dev/null; then
+  eval "$(rbenv init -)";
 fi
 
 # added to enable configure boot2docker shellinit at terminal startup
@@ -64,10 +69,3 @@ fi
 # default location of '~/Applications/'.
 # For more info look in 'man brew-cask'.
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-
-source ~/.aliases
-source ~/.bashrc
-source ~/.bash_prompt
-source ~/Google\ Drive/dotfiles/brew/homebrew_github_api_token.sh
-
-
