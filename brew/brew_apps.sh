@@ -3,19 +3,19 @@
 : '
 Author: sarojk
 Last modified: Mon Nov  2 14:27:14 NPT 2015
-ToDo: 
+ToDo:
   -N/A
 '
 
 # This is a single line comment
 
 : '
-This is a multi-line 
+This is a multi-line
 comment.
 '
 
 # trap INTerrupt (ctrl-c) and call script_interrupted_by_user()
-# syntax: 
+# syntax:
 #       - trap arg signals
 #       -i.e., for trapped signals execute the arg
 trap script_interrupted_by_user INT
@@ -42,34 +42,35 @@ declare -a brew_apps=(
   'tree'
   'grc'
   'bash-completion'
+  'z'
   'macvim --with-override-system-vim'
-  'caskroom/cask/brew-cask' 
+  'caskroom/cask/brew-cask'
+  'nodejs'
   'mongodb'
   );
 
 declare -a brew_cask_apps=(
-  'iterm2' 
+  'iterm2'
   'atom'
-  'google-chrome' 
-  'google-drive' 
-  'google-photos-backup' 
-  'picasa' 
+  'google-chrome'
+  'google-drive'
+  'google-photos-backup'
+  'picasa'
   'flux'
-  'filezilla' 
+  'filezilla'
   'etrecheck'
-  'yujitach-menumeters' 
-  'the-unarchiver' 
-  'qbittorrent' 
-  'firefox' 
-  'skype' 
-  'slack' 
-  'vlc' 
-  'android-file-transfer' 
-  'node' 
-  'unetbootin'  
+  'yujitach-menumeters'
+  'the-unarchiver'
+  'qbittorrent'
+  'firefox'
+  'skype'
+  'slack'
+  'vlc'
+  'android-file-transfer'
+  'unetbootin'
   'appcleaner'
   'viber'
-  'java' 
+  'java'
   'angry-ip-scanner'
   'teamviewer'
   'virtualbox'
@@ -89,9 +90,14 @@ fi
 printf '\nRunning brew doctor...\n'
 brew doctor
 printf '\nUpdating brew repositories...\n'
-brew update 
+brew update
+
+printf '\nUpgrading both brew formulaes and casks...\n'
+printf '\nRunning `brew upgrade --all`...\n'
+brew upgrade --all
+
 printf '\nRunning brew cleanup...\n'
-brew cleanup 
+brew cleanup
 
 printf '\nThe script will attempt to install the following brew apps...\n'
 for i in "${brew_apps[@]}"
@@ -103,12 +109,9 @@ printf '\nInitiating the installs...\n'
 for i in "${brew_apps[@]}"
 do
   brew install $i
-  printf '\n' 
+  printf '\n'
 done
 
-
-printf '\nUpdating brew cask repositories...\n'
-brew upgrade brew-cask 
 printf '\nRunning brew cask cleanup...\n'
 brew cask cleanup
 
@@ -122,6 +125,7 @@ printf '\nInitiating the installs...\n'
 for i in "${brew_cask_apps[@]}"
 do
   brew cask install $i
-  printf '\n' 
+  printf '\n'
 done
+
 
