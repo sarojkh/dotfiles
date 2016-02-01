@@ -10,3 +10,7 @@ export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
 # Hack from https://atom.io/packages/term3
 export PATH=$(cat /etc/paths | xargs | tr " " :)
+
+# Added to get 'z' to work
+. `brew --prefix`/etc/profile.d/z.sh
+
