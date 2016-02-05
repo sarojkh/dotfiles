@@ -57,9 +57,6 @@ if which rbenv > /dev/null; then
   eval "$(rbenv init -)";
 fi
 
-# added to enable configure boot2docker shellinit at terminal startup
-$(boot2docker shellinit 2> /dev/null)
-
 # added for bash-completion to work well
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
