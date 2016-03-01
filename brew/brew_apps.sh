@@ -60,7 +60,7 @@ declare -a brew_cask_apps=(
   'etrecheck'
   'yujitach-menumeters'
   'the-unarchiver'
-  'qbittorrent'
+  'transmission'
   'firefox'
   'skype'
   'slack'
