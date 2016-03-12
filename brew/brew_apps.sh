@@ -54,7 +54,6 @@ declare -a brew_cask_apps=(
   'atom'
   'google-chrome'
   'google-drive'
-  'google-photos-backup'
   'flux'
   'filezilla'
   'etrecheck'
