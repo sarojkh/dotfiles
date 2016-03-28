@@ -70,7 +70,6 @@ declare -a brew_cask_apps=(
   'viber'
   'teamviewer'
   'virtualbox'
-  'microsoft-office'
   );
 
 # Installing 'brew' if not installed already...
