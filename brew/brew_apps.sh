@@ -68,8 +68,6 @@ declare -a brew_cask_apps=(
   'unetbootin'
   'appcleaner'
   'viber'
-  'java'
-  'angry-ip-scanner'
   'teamviewer'
   'virtualbox'
   'microsoft-office'
