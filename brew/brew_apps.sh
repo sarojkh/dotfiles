@@ -44,7 +44,7 @@ declare -a brew_apps=(
   'bash-completion'
   'z'
   'macvim --with-override-system-vim'
-  'caskroom/cask/brew-cask'
+  'caskroom/cask'
   'nodejs'
   'mongodb'
   );
