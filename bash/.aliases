@@ -4,5 +4,6 @@ alias open_links="~/Google\ Drive/Code/python/scripts/open_links.py"
 alias gdrive="cd ~/Google\ Drive/"
 alias gt_code_folder="cd ~/Google\ Drive/Code/"
 alias brew_apps="~/Google\ Drive/dotfiles/brew/brew_apps.sh"
+alias rm_pg_pid="rm /usr/local/var/postgres/postmaster.pid"
 
 
