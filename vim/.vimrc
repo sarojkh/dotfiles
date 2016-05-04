@@ -1,4 +1,4 @@
-    
+
 set nocompatible              " be iMproved(unsets the compatibility with ancient Vi)
 filetype off                  " required (for Vundle)
 
@@ -9,28 +9,42 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
 
-" List of manually added plugins
-Plugin 'jnurmine/Zenburn'       "zenburn colorscheme
-Plugin 'tomasr/molokai'         "molokai colorscheme
-Plugin 'kien/ctrlp.vim'         "CtrlP FuzzyFinder
-Plugin 'vim-scripts/ZoomWin'    "Set full-width to current split
-Plugin 'scrooloose/syntastic'   "Syntax checking plugin
-Plugin 'vim-scripts/tComment'   "Toggle comment
-Plugin 'bling/vim-airline'      "Status line
-Plugin 'tpope/vim-fugitive'     "Git integration
-Plugin 'scrooloose/nerdtree'    "NERDTree
-Plugin 'dhruvasagar/vim-vinegar' "Open NERDTree like NETrw with '-' key. 
-Plugin 'terryma/vim-multiple-cursors' "Multiple cursors
-Plugin 'mattn/emmet-vim'        "Abbreviation expansion(auto-expansion)
-Plugin 'nathanaelkane/vim-indent-guides' "Visually display indent levels
-Plugin 'godlygeek/tabular'      "Line up texts that match same pattern
-
+                                         " List of manually added plugins
+Plugin 'airblade/vim-gitgutter'          " Show git modifications
+Plugin 'ap/vim-css-color'                " Preview colors in source-code while editing
+Plugin 'bling/vim-airline'               " Status line
+Plugin 'dhruvasagar/vim-vinegar'         " Open NERDTree like NETrw with '-' key.
+Plugin 'gmarik/Vundle.vim'               " Plug-in manager for vim
+Plugin 'godlygeek/tabular'               " Line up texts that match same pattern
+Plugin 'jnurmine/Zenburn'                " zenburn colorscheme
+Plugin 'junegunn/goyo.vim'               " Distractino-free writing in Vim
+Plugin 'junegunn/limelight.vim'          " Hyper-focus writing in Vim
+Plugin 'kchmck/vim-coffee-script'        " Coffee Script support
+Plugin 'kshenoy/vim-signature'           " Place, toggle and dispaly marks
+Plugin 'mattn/emmet-vim'                 " Abbreviation expansion(auto-expansion)
+Plugin 'nathanaelkane/vim-indent-guides' " Visually display indent levels
+Plugin 'pangloss/vim-javascript'         " JS syntax highlighting and indentation
+Plugin 'rking/ag.vim'                    " The Silver Searcher
+Plugin 'ryanoasis/vim-devicons'          " File icons for NERDTree
+Plugin 'scrooloose/nerdcommenter'        " AutoCompletion
+Plugin 'scrooloose/nerdtree'             " NERDTree
+Plugin 'scrooloose/syntastic'            " Syntax checking plugin
+Plugin 'Shougo/neomru.vim'
+Plugin 'Shougo/neoyank.vim'
+Plugin 'Shougo/unite-outline'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'terryma/vim-multiple-cursors'    " Multiple cursors
+Plugin 'tomasr/molokai'                  " molokai colorscheme
+Plugin 'tpope/vim-fugitive'              " Git integration
+Plugin 'tpope/vim-rails'                 " Rails support-ish
+Plugin 'Valloric/YouCompleteMe'          " AutoCompletion
+Plugin 'Xuyuanp/nerdtree-git-plugin'     " Git Integration with NERDTree
 " Keep Plugin commands between vundle#begin/end.
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required                                 
+call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -46,7 +60,7 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 
-" Majority of the following config was extracted from 
+" Majority of the following config was extracted from
 " https://github.com/michaeljsmalley/dotfiles/blob/master/vimrc
 " However, there are small additions and modifications here and there.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -55,7 +69,6 @@ filetype plugin indent on    " required
 set t_Co=256              " enable 256-color mode.
 syntax enable             " enable syntax highlighting (previously syntax on).
 colorscheme molokai       " set colorscheme
-set guifont=Monaco:h14    " set font for MacVIM. vim in terminal uses terminal font
 
 " Highlight characters that go over 80 columns (by drawing a border on the 81st)
 if exists('+colorcolumn')
@@ -65,12 +78,6 @@ else
   highlight OverLength ctermbg=red ctermfg=white guibg=#592929
   match OverLength /\%81v.\+/
 endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Netrw Explorer
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" let g:netrw_liststyle=3   " open Netrw in Tree mode by default
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim UI                                                                 "
@@ -93,13 +100,17 @@ let g:indent_guides_enable_on_vim_startup = 1 "Start indent_guide at startup
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set autoindent            " auto-indent
 set tabstop=2             " tab is 2 spaces
-set softtabstop=2         " unify       
+set softtabstop=2         " unify
 set shiftwidth=2          " indent/outdent by 2 columns
 set shiftround            " always indent/outdent to the nearest tabstop
 set expandtab             " use spaces instead of tabs
 set smartindent           " automatically insert one extra level of indentation
 set smarttab              " use tabs at the start of a line, spaces elsewhere
-set nowrap                " don't wrap text
+" soft wrap conf begins
+set wrap
+set linebreak
+set nolist  " list disables linebreak
+" soft wrap conf ends
 set splitbelow            " new (horizonatal) split opens below the current split
 set splitright            " new (vertical) vsplit opens right to the current split
 
@@ -108,22 +119,25 @@ set splitright            " new (vertical) vsplit opens right to the current spl
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Note - can't append comments in vim commands like 'nnoremap', 'map', etc
 
-" Replace (Ctrl+;) with just ; 
+" Replace (Shift+;) with just ;
 nnoremap ; :
 " Easily goto normal mode by pressing 'jj' instead of <ESC>.
-" Apparently 'jj' is very rarely typed in insert mode, and doesn't confilict
+" Apparently 'jj' is very rarely typed in insert mode, and doesn't conflict
 " with normal typing.
 inoremap jj <ESC>
 " Change the default MapLeader key, '\', to ','
 let mapleader =","
-" Map 'E' to 'Explore'- Netrw's command
-" courtesy:
-" http://stackoverflow.com/questions/14367440/map-e-to-explore-in-command-mode
-command! -nargs=* -bar -bang -count=0 -complete=dir E Explore <args>
 
+" Better split switching (Ctrl-j, Ctrl-k, Ctrl-h, Ctrl-l) {{{
+" Courtesy: https://github.com/paulirish/dotfiles/blob/master/.vimrc
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+" }}}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Window Size 
+" Window Size
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("gui_running")
   " GUI is running or is about to start.
@@ -162,7 +176,7 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configuration for vim-airline
@@ -171,15 +185,105 @@ let g:airline#extensions#tabline#enabled = 1    "Existing buffers listed at top
 let g:airline#extensions#branch#enabled = 1     "Fugitive support
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuration for buffer maniupluation
+" Excerpted from http://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs/
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" This allows buffers to be hidden if you've modified a buffer.
+" This is almost a must if you wish to use buffers in this way.
+set hidden
+
+" To open a new empty buffer
+" This replaces :tabnew which I used to bind to this mapping
+nmap <leader>T :enew<cr>
+
+" Faster buffer naviation
+map ]b :bnext<CR>
+map [b :bprevious<CR>
+
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <leader>bq :bp <BAR> bd #<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuration for Ag:The Silver Searcher
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ag_working_path_mode="r" "always start searching from your project root instead of the cwd
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configuration for NERDTree
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"autocmd vimenter * NERDTree         "start NERDTree at startup
+autocmd vimenter * NERDTree         "start NERDTree at startup
+let NERDTreeShowHidden=1            "show hidden files by default
+let g:NERDTreeWinSize = 25          "Fixed NERDTree window size
+map <leader>n :NERDTreeToggle<CR>
+
+"view the current buffer in NERDTree
+map <leader>r :NERDTreeFind<cr>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuration for nerdtree-git-plugin 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"let g:NERDTreeIndicatorMapCustom = {
+      "\ "Modified"  : "✹",
+      "\ "Staged"    : "✚",
+      "\ "Untracked" : "✭",
+      "\ "Renamed"   : "➜",
+      "\ "Unmerged"  : "═",
+      "\ "Deleted"   : "✖",
+      "\ "Dirty"     : "✗",
+      "\ "Clean"     : "✔︎",
+      "\ "Unknown"   : "?"
+      "\ }
+
+   
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuration for vim-devicons
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Encoding must be set to UTF-8 for the glyphs to show
+set encoding=utf8
+" For Powerline symbols to show in airline the following needs to be set
+let g:airline_powerline_fonts = 1
+" To get glyphs to show completely in MacVim
+" courtesy: https://github.com/ryanoasis/vim-devicons/issues/110
+set ambiwidth=double
+
+"set guifont=AurulentSansMono-Regular\ Nerd\ Font\ Complete:h11
+"set guifont=Bitstream\ Vera\ Sans\ Mono\ Nerd\ Font\ Complete:h13
+"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete:h13
+"set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete:h13
+"set guifont=Inconsolata\ for\ Powerline\ Nerd\ Font\ Complete:h14
+"set guifont=Literation\ Mono\ Powerline\ Nerd\ Font\ Complete:h13
+set guifont=Ubuntu\ Mono\ derivative\ Powerline\ Nerd\ Font\ Complete:h14
+"set guifont=Knack\ Regular\ Nerd\ Font\ Complete\ Mono:h13
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuration for Unite
+" excerpted from : http://www.codeography.com/2013/06/17/replacing-all-the-things-with-unite-vim.html
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+"nnoremap <C-p> :Unite file_rec/async<cr>
+"nnoremap <space>s :Unite -quick-match buffer<cr>
+nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
+nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
+nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+
+" Custom mappings for the unite buffer
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  " Play nice with supertab
+  let b:SuperTabDisabled=1
+  " Enable navigation with control-j and control-k in insert mode
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Notes (by sarojk)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"to get rid of 'no buftype set' error, 
+"to get rid of 'no buftype set' error,
 ":set buftype:
 "
 "to load updated .vimrc without restarting
