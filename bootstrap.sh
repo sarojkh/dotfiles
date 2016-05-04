@@ -6,7 +6,9 @@ dotfile_root=~/"Google Drive/dotfiles"
 
 # Create symlinks for dotfiles
 ln -s "$dotfile_root/vim/.vimrc" ~/.vimrc
-ln -s "$dotfile_root/vim/.vim/" ~/.vim
+
+# Install Vundle.vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 ln -s "$dotfile_root/bash/.bash_profile" ~/.bash_profile
 ln -s "$dotfile_root/bash/.bashrc" ~/.bashrc
