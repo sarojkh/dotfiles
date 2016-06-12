@@ -66,3 +66,13 @@ fi
 # default location of '~/Applications/'.
 # For more info look in 'man brew-cask'.
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+
+# To get docker to work in (newer) bash session than those used to start docker
+docker_running=$(docker-machine ls | grep default )
+if [[ "$docker_running" == *"Running"* ]]
+then
+  eval "$(docker-machine env default)"
+fi
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
