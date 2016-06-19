@@ -14,3 +14,7 @@ alias rm_pg_pid="rm /usr/local/var/postgres/postmaster.pid"
 alias fire_rails="rails s -b 0.0.0.0"
 alias rails_test="rake test"
 alias rails_test_integration="rake test:integration"
+
+# OSX Setup
+alias dock_right="defaults write com.apple.dock orientation -string 'right' && defaults write com.apple.dock tilesize -int 16 && killall Dock"
+alias dock_bottom="defaults write com.apple.dock orientation -string 'bottom' && defaults write com.apple.dock tilesize -int 24 && killall Dock"
