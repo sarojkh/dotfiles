@@ -2,7 +2,7 @@
 TODO:
 	-Echo all the steps
 '
-dotfile_root=~/"Google Drive/dotfiles"
+dotfile_root=~/"git/dotfiles"
 
 # Create symlinks for dotfiles
 ln -s "$dotfile_root/vim/.vimrc" ~/.vimrc

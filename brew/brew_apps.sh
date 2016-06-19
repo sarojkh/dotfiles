@@ -43,13 +43,14 @@ declare -a brew_apps=(
   'grc'
   'bash-completion'
   'z'
-  'macvim --with-override-system-vim'
   'nodejs'
   'mongodb'
+  'cmake'
   );
 
 declare -a brew_cask_apps=(
   'iterm2'
+  'macvim --with-override-system-vim'
   'atom'
   'google-chrome'
   'google-drive'
