@@ -12,7 +12,7 @@
 source ~/.aliases
 source ~/.bashrc
 source ~/.bash_prompt
-source ~/Google\ Drive/dotfiles/brew/homebrew_github_api_token.sh
+source ~/git/dotfiles/brew/homebrew_github_api_token.sh
 
 # generic colouriser
 GRC=`which grc`
@@ -68,11 +68,9 @@ fi
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 
-# To get docker to work in (newer) bash session than those used to start docker
-docker_running=$(docker-machine ls | grep default )
-if [[ "$docker_running" == *"Running"* ]]
-then
-  eval "$(docker-machine env default)"
-fi
-
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+## To get docker to work in (newer) bash session than those used to start docker
+#docker_running=$(docker-machine ls | grep default )
+#if [[ "$docker_running" == *"Running"* ]]
+#then
+  #eval "$(docker-machine env default)"
+#fi

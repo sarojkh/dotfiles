@@ -2,12 +2,15 @@
 
 alias open_links="~/Google\ Drive/Code/python/scripts/open_links.py"
 alias gdrive="cd ~/Google\ Drive/"
-alias gt_code_folder="cd ~/Google\ Drive/Code/"
-alias brew_apps="~/Google\ Drive/dotfiles/brew/brew_apps.sh"
-alias rm_pg_pid="rm /usr/local/var/postgres/postmaster.pid"
+alias brew_apps="~/git/dotfiles/brew/brew_apps.sh"
 alias vimn="vim -u NONE"
+alias vim="mvim -v"
 alias flush_dns="sudo killall -HUP mDNSResponder"
-alias fire_rails="rails s -b 0.0.0.0"
 alias mtop="top -o mem"
 alias ctop="top -o cpu"
 
+# Rails
+alias rm_pg_pid="rm /usr/local/var/postgres/postmaster.pid"
+alias fire_rails="rails s -b 0.0.0.0"
+alias rails_test="rake test"
+alias rails_test_integration="rake test:integration"

@@ -185,26 +185,6 @@ let g:airline#extensions#tabline#enabled = 1    "Existing buffers listed at top
 let g:airline#extensions#branch#enabled = 1     "Fugitive support
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Configuration for buffer maniupluation
-" Excerpted from http://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs/
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" This allows buffers to be hidden if you've modified a buffer.
-" This is almost a must if you wish to use buffers in this way.
-set hidden
-
-" To open a new empty buffer
-" This replaces :tabnew which I used to bind to this mapping
-nmap <leader>T :enew<cr>
-
-" Faster buffer naviation
-map ]b :bnext<CR>
-map [b :bprevious<CR>
-
-" Close the current buffer and move to the previous one
-" This replicates the idea of closing a tab
-nmap <leader>bq :bp <BAR> bd #<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configuration for Ag:The Silver Searcher
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ag_working_path_mode="r" "always start searching from your project root instead of the cwd
@@ -255,6 +235,28 @@ set ambiwidth=double
 "set guifont=Literation\ Mono\ Powerline\ Nerd\ Font\ Complete:h13
 set guifont=Ubuntu\ Mono\ derivative\ Powerline\ Nerd\ Font\ Complete:h14
 "set guifont=Knack\ Regular\ Nerd\ Font\ Complete\ Mono:h13
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuration for buffer maniupluation
+" Excerpted from http://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs/
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" This allows buffers to be hidden if you've modified a buffer.
+" This is almost a must if you wish to use buffers in this way.
+set hidden
+
+" To open a new empty buffer
+" This replaces :tabnew which I used to bind to this mapping
+nmap <leader>T :enew<cr>
+
+" Faster buffer naviation
+map ]b :bnext<CR>
+map [b :bprevious<CR>
+
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <leader>bq :bp <BAR> bd #<CR>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configuration for Unite
