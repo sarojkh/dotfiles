@@ -18,29 +18,25 @@ Plugin 'dhruvasagar/vim-vinegar'         " Open NERDTree like NETrw with '-' key
 Plugin 'gmarik/Vundle.vim'               " Plug-in manager for vim
 Plugin 'godlygeek/tabular'               " Line up texts that match same pattern
 Plugin 'jnurmine/Zenburn'                " zenburn colorscheme
-Plugin 'junegunn/goyo.vim'               " Distractino-free writing in Vim
-Plugin 'junegunn/limelight.vim'          " Hyper-focus writing in Vim
+"Plugin 'junegunn/goyo.vim'               " Distractino-free writing in Vim
+"Plugin 'junegunn/limelight.vim'          " Hyper-focus writing in Vim
 Plugin 'kchmck/vim-coffee-script'        " Coffee Script support
 Plugin 'kshenoy/vim-signature'           " Place, toggle and dispaly marks
 Plugin 'mattn/emmet-vim'                 " Abbreviation expansion(auto-expansion)
 Plugin 'nathanaelkane/vim-indent-guides' " Visually display indent levels
 Plugin 'pangloss/vim-javascript'         " JS syntax highlighting and indentation
-Plugin 'rking/ag.vim'                    " The Silver Searcher
+"Plugin 'rking/ag.vim'                    " The Silver Searcher
 Plugin 'ryanoasis/vim-devicons'          " File icons for NERDTree
 Plugin 'scrooloose/nerdcommenter'        " AutoCompletion
 Plugin 'scrooloose/nerdtree'             " NERDTree
 Plugin 'scrooloose/syntastic'            " Syntax checking plugin
-Plugin 'Shougo/neomru.vim'
-Plugin 'Shougo/neoyank.vim'
-Plugin 'Shougo/unite-outline'
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/vimproc.vim'
 Plugin 'terryma/vim-multiple-cursors'    " Multiple cursors
 Plugin 'tomasr/molokai'                  " molokai colorscheme
 Plugin 'tpope/vim-fugitive'              " Git integration
 Plugin 'tpope/vim-rails'                 " Rails support-ish
 Plugin 'Valloric/YouCompleteMe'          " AutoCompletion
 Plugin 'Xuyuanp/nerdtree-git-plugin'     " Git Integration with NERDTree
+Plugin 'ctrlpvim/ctrlp.vim'             " Fuzzy Finder 
 " Keep Plugin commands between vundle#begin/end.
 
 " All of your Plugins must be added before the following line
@@ -108,7 +104,9 @@ set smartindent           " automatically insert one extra level of indentation
 set smarttab              " use tabs at the start of a line, spaces elsewhere
 " soft wrap conf begins
 set wrap
+set breakindent showbreak=..
 set linebreak
+"set foldmethod=indent foldcolumn=2
 set nolist  " list disables linebreak
 " soft wrap conf ends
 set splitbelow            " new (horizonatal) split opens below the current split
@@ -192,7 +190,7 @@ let g:ag_working_path_mode="r" "always start searching from your project root in
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configuration for NERDTree
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd vimenter * NERDTree         "start NERDTree at startup
+"autocmd vimenter * NERDTree         "start NERDTree at startup
 let NERDTreeShowHidden=1            "show hidden files by default
 let g:NERDTreeWinSize = 25          "Fixed NERDTree window size
 map <leader>n :NERDTreeToggle<CR>
@@ -227,14 +225,7 @@ let g:airline_powerline_fonts = 1
 " courtesy: https://github.com/ryanoasis/vim-devicons/issues/110
 set ambiwidth=double
 
-"set guifont=AurulentSansMono-Regular\ Nerd\ Font\ Complete:h11
-"set guifont=Bitstream\ Vera\ Sans\ Mono\ Nerd\ Font\ Complete:h13
-"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete:h13
-"set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete:h13
-"set guifont=Inconsolata\ for\ Powerline\ Nerd\ Font\ Complete:h14
-"set guifont=Literation\ Mono\ Powerline\ Nerd\ Font\ Complete:h13
 set guifont=Ubuntu\ Mono\ derivative\ Powerline\ Nerd\ Font\ Complete:h14
-"set guifont=Knack\ Regular\ Nerd\ Font\ Complete\ Mono:h13
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -257,30 +248,6 @@ map [b :bprevious<CR>
 " This replicates the idea of closing a tab
 nmap <leader>bq :bp <BAR> bd #<CR>
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Configuration for Unite
-" excerpted from : http://www.codeography.com/2013/06/17/replacing-all-the-things-with-unite-vim.html
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-"nnoremap <C-p> :Unite file_rec/async<cr>
-"nnoremap <space>s :Unite -quick-match buffer<cr>
-nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
-nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
-nnoremap <leader>m :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
-nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
-nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
-nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
-
-" Custom mappings for the unite buffer
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-  " Play nice with supertab
-  let b:SuperTabDisabled=1
-  " Enable navigation with control-j and control-k in insert mode
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Notes (by sarojk)

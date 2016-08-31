@@ -12,8 +12,11 @@ alias ctop="top -o cpu"
 # Rails
 alias rm_pg_pid="rm /usr/local/var/postgres/postmaster.pid"
 alias fire_rails="rails s -b 0.0.0.0"
-alias rails_test="rake test"
-alias rails_test_integration="rake test:integration"
+alias rails_test="bundle exec rake test"
+alias rails_test_integration="bundle exec rake test:integration"
+alias rails_annotate="bundle exec annotate --exclude tests,fixtures,factories,serializers"
+alias find_bind="lsof -wni tcp:3000"
+alias ruby_syntax='find . -name *.rb -exec ruby -c {} \;'
 
 # OSX Setup
 alias dock_right="defaults write com.apple.dock orientation -string 'right' && defaults write com.apple.dock tilesize -int 16 && killall Dock"

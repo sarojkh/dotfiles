@@ -13,6 +13,7 @@ source ~/.aliases
 source ~/.bashrc
 source ~/.bash_prompt
 source ~/git/dotfiles/brew/homebrew_github_api_token.sh
+source ~/.env_var
 
 # generic colouriser
 GRC=`which grc`
