@@ -1,43 +1,42 @@
-
-# Note:
-# From http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html :
-#   Unlike *nix system's bash, which loads .bash_profile for login shell, and
-#   .bashrc for non-login shell(new terminal window), Mac OS X’s Terminal.app
-#   runs a login shell by default for both login shell and non-login shell(new
-#   terminal window), calling .bash_profile instead of .bashrc.
-
-# Shoutouts:
-# -https://github.com/paulirish/dotfiles
-
+### External sources
 source ~/.aliases
 source ~/.bashrc
 source ~/.bash_prompt
 source ~/git/dotfiles/brew/homebrew_github_api_token.sh
 source ~/.env_var
+source ~/.z.sh
 
-# generic colouriser
-GRC=`which grc`
-if [ "$TERM" != dumb ] && [ -n "$GRC" ]
-then
-  alias colourify="$GRC -es --colour=auto"
-  alias configure='colourify ./configure'
-  for app in {diff,make,gcc,g++,ping,traceroute}; do
-    alias "$app"='colourify '$app
-  done
-fi
+### Aliases
 
-# highlighting inside manpages and elsewhere
-export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
-export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
-export LESS_TERMCAP_me=$'\E[0m'           # end mode
-export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode
-export LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box
-export LESS_TERMCAP_ue=$'\E[0m'           # end underline
-export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
+# Color LS
+colorflag="-G"
+alias ls="command ls ${colorflag}"
+alias l="ls -lF ${colorflag}" # all files, in long format
+alias la="ls -laF ${colorflag}" # all files inc dotfiles, in long format
+alias lsd='ls -lF ${colorflag} | grep "^d"' # only directories
 
-##
-## gotta tune that bash_history…
-##
+# Quicker navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+# Enable aliases to be sudo’ed
+alias sudo='sudo '
+
+# Colored up cat!
+# You must install Pygments first - "sudo easy_install Pygments"
+alias c='pygmentize -O style=monokai -f console256 -g'
+
+# Git
+# You must install Git first
+alias gs='git status'
+alias ga='git add .'
+alias gc='git commit -m' # requires you to type a commit message
+alias gp='git push'
+alias grm='git rm $(git ls-files --deleted)'
+
+### History Tuneup
 
 # timestamps for later analysis. www.debian-administration.org/users/rossen/weblog/1
 export HISTTIMEFORMAT='%F %T '
@@ -47,11 +46,16 @@ export HISTTIMEFORMAT='%F %T '
 export HISTCONTROL=ignoredups:erasedups         # no duplicate entries
 export HISTSIZE=100000                          # big big history (default is 500)
 export HISTFILESIZE=$HISTSIZE                   # big big history
-which shopt > /dev/null && shopt -s histappend  # append to history, don't overwrite it
+type shopt > /dev/null && shopt -s histappend  # append to history, don't overwrite it
 
 # Save and reload the history after each command finishes
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # ^ the only downside with this is [up] on the readline will go over all history not just this bash session.
+
+### Misc
+
+# Only show the current directory's name in the tab
+export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 
 #added to enable 'rbenv' shims and autocompletion:
 if which rbenv > /dev/null; then
@@ -67,11 +71,3 @@ fi
 # default location of '~/Applications/'.
 # For more info look in 'man brew-cask'.
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-
-
-## To get docker to work in (newer) bash session than those used to start docker
-#docker_running=$(docker-machine ls | grep default )
-#if [[ "$docker_running" == *"Running"* ]]
-#then
-  #eval "$(docker-machine env default)"
-#fi

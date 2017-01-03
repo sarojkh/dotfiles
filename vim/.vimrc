@@ -18,14 +18,11 @@ Plugin 'dhruvasagar/vim-vinegar'         " Open NERDTree like NETrw with '-' key
 Plugin 'gmarik/Vundle.vim'               " Plug-in manager for vim
 Plugin 'godlygeek/tabular'               " Line up texts that match same pattern
 Plugin 'jnurmine/Zenburn'                " zenburn colorscheme
-"Plugin 'junegunn/goyo.vim'               " Distractino-free writing in Vim
-"Plugin 'junegunn/limelight.vim'          " Hyper-focus writing in Vim
 Plugin 'kchmck/vim-coffee-script'        " Coffee Script support
 Plugin 'kshenoy/vim-signature'           " Place, toggle and dispaly marks
 Plugin 'mattn/emmet-vim'                 " Abbreviation expansion(auto-expansion)
-Plugin 'nathanaelkane/vim-indent-guides' " Visually display indent levels
+Plugin 'Yggdroot/indentLine'             " Visually display indent levels
 Plugin 'pangloss/vim-javascript'         " JS syntax highlighting and indentation
-"Plugin 'rking/ag.vim'                    " The Silver Searcher
 Plugin 'ryanoasis/vim-devicons'          " File icons for NERDTree
 Plugin 'scrooloose/nerdcommenter'        " AutoCompletion
 Plugin 'scrooloose/nerdtree'             " NERDTree
@@ -89,7 +86,6 @@ set ignorecase            " Make searches case-insensitive.
 set ruler                 " Always show info along bottom.
 set showmatch             " Show Matching Parenthesis
 set visualbell            " Don't beep; flash the screen instead.
-let g:indent_guides_enable_on_vim_startup = 1 "Start indent_guide at startup
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text Formatting/Layout                                                 "
