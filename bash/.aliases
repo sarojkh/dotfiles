@@ -11,10 +11,11 @@ alias mtop="top -o mem"
 alias ctop="top -o cpu"
 alias mping="ping mit.edu"
 
-# Rails
+# Rails/Ruby
 #alias rm_pg_pid="rm /usr/local/var/postgres/postmaster.pid"
 alias rm_pg_pid="rm /Users/sarojk/git/danphe/smartkhata_rails/tmp/pids/server.pid"
 alias fire_rails="rails s -b 0.0.0.0"
+alias rails_test_prepare="bundle exec rake db:migrate db:test:prepare"
 alias rails_test="bundle exec rake test"
 alias rails_test_integration="bundle exec rake test:integration"
 alias rails_annotate="bundle exec annotate --exclude tests,fixtures,factories,serializers"
@@ -22,9 +23,13 @@ alias find_bind="lsof -wni tcp:3000"
 alias ruby_syntax='find . -name *.rb -exec ruby -c {} \;'
 alias list_rake_tasks='bundle exec rake -T'
 alias ber='bundle exec rake'
+alias be='bundle exec'
 
 # OSX Misc
 alias dock_right="defaults write com.apple.dock orientation -string 'right' && defaults write com.apple.dock tilesize -int 16 && killall Dock"
 alias dock_bottom="defaults write com.apple.dock orientation -string 'bottom' && defaults write com.apple.dock tilesize -int 24 && killall Dock"
 alias show_hidden_files='defaults write com.apple.finder AppleShowAllFiles YES && killall Finder'
 alias hide_hidden_files='defaults write com.apple.finder AppleShowAllFiles NO && killall Finder'
+
+#iTerm2
+alias ssh='~/bin/ssh-host-color'
