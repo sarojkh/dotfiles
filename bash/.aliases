@@ -9,6 +9,8 @@ alias vi="mvim -v"
 alias flush_dns="sudo killall -HUP mDNSResponder"
 alias mtop="top -o mem"
 alias ctop="top -o cpu"
+alias mhtop="htop -s PERCENT_MEM"
+alias chtop="htop -s PERCENT_CPU"
 alias mping="ping mit.edu"
 
 # Rails/Ruby

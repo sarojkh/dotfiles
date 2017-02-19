@@ -46,6 +46,8 @@ declare -a brew_apps=(
   'nodejs'
   'mongodb'
   'cmake'
+  'htop'
+  'speedtest-cli'
   );
 
 declare -a brew_cask_apps=(
