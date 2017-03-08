@@ -4,7 +4,7 @@ source ~/.bashrc
 source ~/.bash_prompt
 source ~/git/dotfiles/brew/homebrew_github_api_token.sh
 source ~/.env_var
-source ~/.z.sh
+source /usr/local/etc/profile.d/z.sh
 
 ### Aliases
 

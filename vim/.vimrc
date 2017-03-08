@@ -17,7 +17,6 @@ Plugin 'bling/vim-airline'               " Status line
 Plugin 'dhruvasagar/vim-vinegar'         " Open NERDTree like NETrw with '-' key.
 Plugin 'gmarik/Vundle.vim'               " Plug-in manager for vim
 Plugin 'godlygeek/tabular'               " Line up texts that match same pattern
-Plugin 'jnurmine/Zenburn'                " zenburn colorscheme
 Plugin 'kchmck/vim-coffee-script'        " Coffee Script support
 Plugin 'kshenoy/vim-signature'           " Place, toggle and dispaly marks
 Plugin 'mattn/emmet-vim'                 " Abbreviation expansion(auto-expansion)
@@ -28,7 +27,9 @@ Plugin 'scrooloose/nerdcommenter'        " AutoCompletion
 Plugin 'scrooloose/nerdtree'             " NERDTree
 Plugin 'scrooloose/syntastic'            " Syntax checking plugin
 Plugin 'terryma/vim-multiple-cursors'    " Multiple cursors
+Plugin 'jnurmine/Zenburn'                " zenburn colorscheme
 Plugin 'tomasr/molokai'                  " molokai colorscheme
+Plugin 'altercation/vim-colors-solarized' " solarized colorscheme
 Plugin 'tpope/vim-fugitive'              " Git integration
 Plugin 'tpope/vim-rails'                 " Rails support-ish
 Plugin 'Valloric/YouCompleteMe'          " AutoCompletion
@@ -61,7 +62,8 @@ filetype plugin indent on    " required
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set t_Co=256              " enable 256-color mode.
 syntax enable             " enable syntax highlighting (previously syntax on).
-colorscheme molokai       " set colorscheme
+colorscheme solarized     " set colorscheme
+set background=dark
 
 " Highlight characters that go over 80 columns (by drawing a border on the 81st)
 if exists('+colorcolumn')

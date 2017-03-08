@@ -36,6 +36,7 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 declare -a brew_apps=(
   'bash'
   'git'
+  'diff-so-fancy'
   'wget'
   'tmux'
   'rbenv'
@@ -44,6 +45,7 @@ declare -a brew_apps=(
   'bash-completion'
   'z'
   'nodejs'
+  'postgresql'
   'mongodb'
   'cmake'
   'htop'
@@ -51,15 +53,17 @@ declare -a brew_apps=(
   );
 
 declare -a brew_cask_apps=(
+  'yujitach-menumeters'
   'iterm2'
+  'caffeine'
   'macvim --with-override-system-vim'
   'atom'
+  'visual-studio-code'
   'google-chrome'
   'google-drive'
   'flux'
   'filezilla'
   'etrecheck'
-  'yujitach-menumeters'
   'the-unarchiver'
   'transmission'
   'firefox'
@@ -72,6 +76,8 @@ declare -a brew_cask_apps=(
   'viber'
   'teamviewer'
   'virtualbox'
+  'rubymine'
+  'yed'
   'microsoft-office'
   );
 
