@@ -44,6 +44,7 @@ declare -a brew_apps=(
   'grc'
   'bash-completion'
   'z'
+  'ack'
   'nodejs'
   'postgresql'
   'mongodb'
@@ -98,7 +99,7 @@ brew update
 
 printf '\nUpgrading both brew formulaes and casks...\n'
 printf '\nRunning `brew upgrade --all`...\n'
-brew upgrade --all
+brew upgrade
 
 printf '\nRunning brew cleanup...\n'
 brew cleanup

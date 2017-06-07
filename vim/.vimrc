@@ -29,12 +29,12 @@ Plugin 'scrooloose/syntastic'            " Syntax checking plugin
 Plugin 'terryma/vim-multiple-cursors'    " Multiple cursors
 Plugin 'jnurmine/Zenburn'                " zenburn colorscheme
 Plugin 'tomasr/molokai'                  " molokai colorscheme
-Plugin 'altercation/vim-colors-solarized' " solarized colorscheme
 Plugin 'tpope/vim-fugitive'              " Git integration
 Plugin 'tpope/vim-rails'                 " Rails support-ish
 Plugin 'Valloric/YouCompleteMe'          " AutoCompletion
 Plugin 'Xuyuanp/nerdtree-git-plugin'     " Git Integration with NERDTree
-Plugin 'ctrlpvim/ctrlp.vim'             " Fuzzy Finder 
+Plugin 'ctrlpvim/ctrlp.vim'              " Fuzzy Finder 
+Plugin 'will133/vim-dirdiff'             " Diff utility
 " Keep Plugin commands between vundle#begin/end.
 
 " All of your Plugins must be added before the following line
@@ -62,7 +62,7 @@ filetype plugin indent on    " required
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set t_Co=256              " enable 256-color mode.
 syntax enable             " enable syntax highlighting (previously syntax on).
-colorscheme solarized     " set colorscheme
+colorscheme zenburn       " set colorscheme
 set background=dark
 
 " Highlight characters that go over 80 columns (by drawing a border on the 81st)

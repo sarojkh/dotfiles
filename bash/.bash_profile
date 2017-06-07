@@ -2,9 +2,7 @@
 source ~/.aliases
 source ~/.bashrc
 source ~/.bash_prompt
-source ~/git/dotfiles/brew/homebrew_github_api_token.sh
 source ~/.env_var
-source /usr/local/etc/profile.d/z.sh
 
 ### Aliases
 
@@ -71,3 +69,9 @@ fi
 # default location of '~/Applications/'.
 # For more info look in 'man brew-cask'.
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
+export PATH="/usr/local/opt/v8-315/bin:$PATH"
+export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
+
+source /usr/local/etc/profile.d/z.sh

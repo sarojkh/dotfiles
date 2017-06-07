@@ -12,6 +12,7 @@ alias ctop="top -o cpu"
 alias mhtop="htop -s PERCENT_MEM"
 alias chtop="htop -s PERCENT_CPU"
 alias mping="ping mit.edu"
+alias ll="ls -l"
 
 # Rails/Ruby
 #alias rm_pg_pid="rm /usr/local/var/postgres/postmaster.pid"
@@ -27,11 +28,15 @@ alias list_rake_tasks='bundle exec rake -T'
 alias ber='bundle exec rake'
 alias be='bundle exec'
 
+#Rcg
+alias rec_ber="rails s -p50000"
+alias rec_sber="bundle exec bin/rails_ssl"
+
 # OSX Misc
 alias dock_right="defaults write com.apple.dock orientation -string 'right' && defaults write com.apple.dock tilesize -int 16 && killall Dock"
 alias dock_bottom="defaults write com.apple.dock orientation -string 'bottom' && defaults write com.apple.dock tilesize -int 24 && killall Dock"
 alias show_hidden_files='defaults write com.apple.finder AppleShowAllFiles YES && killall Finder'
 alias hide_hidden_files='defaults write com.apple.finder AppleShowAllFiles NO && killall Finder'
 
-#iTerm2
-alias ssh='~/bin/ssh-host-color'
+#Git
+alias files_changed_in_commit='git diff-tree --no-commit-id --name-only -r'
