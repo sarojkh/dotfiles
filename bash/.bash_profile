@@ -2,6 +2,7 @@
 source ~/.aliases
 source ~/.bashrc
 source ~/.bash_prompt
+source ~/.bash_functions
 source ~/.env_var
 
 ### Aliases

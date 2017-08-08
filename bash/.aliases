@@ -31,7 +31,7 @@ alias be='bundle exec'
 
 #Rcg
 alias rec_ber="rails s -p50000"
-alias rec_sber="bundle exec bin/rails_ssl"
+alias rec_sber="thin start -p 50000 --ssl --ssl-verify --ssl-key-file $HOME/.ssl/server.key --ssl-cert-file $HOME/.ssl/server.crt"
 
 # OSX Misc
 alias dock_right="defaults write com.apple.dock orientation -string 'right' && defaults write com.apple.dock tilesize -int 16 && killall Dock"

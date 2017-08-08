@@ -14,6 +14,7 @@ ln -s "$dotfile_root/bash/.bash_profile" ~/.bash_profile
 ln -s "$dotfile_root/bash/.bashrc" ~/.bashrc
 ln -s "$dotfile_root/bash/.aliases" ~/.aliases
 ln -s "$dotfile_root/bash/.bash_prompt" ~/.bash_prompt
+ln -s "$dotfile_root/bash/.bash_functions" ~/.bash_functions
 
 ln -s "$dotfile_root/cron/.cron" ~/.cron
 
