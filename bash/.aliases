@@ -31,7 +31,7 @@ alias be='bundle exec'
 
 #Rcg
 alias rec_ber="rails s -p50000"
-alias rec_sber="thin start -p 50000 --ssl --ssl-verify --ssl-key-file $HOME/.ssl/server.key --ssl-cert-file $HOME/.ssl/server.crt"
+alias rec_sber="bundle exec thin start -p 50000 --ssl --ssl-verify --ssl-key-file $HOME/.ssl/server.key --ssl-cert-file $HOME/.ssl/server.crt"
 
 # OSX Misc
 alias dock_right="defaults write com.apple.dock orientation -string 'right' && defaults write com.apple.dock tilesize -int 16 && killall Dock"
@@ -41,3 +41,12 @@ alias hide_hidden_files='defaults write com.apple.finder AppleShowAllFiles NO &&
 
 #Git
 alias files_changed_in_commit='git diff-tree --no-commit-id --name-only -r'
+alias files_changed_between_commits='files_changed_in_commit'
+alias changes_in_commit='git show --color --pretty=format:%b'
+alias changes_between_commits='changes_in_commit'
+alias gs='git status'
+alias gd='git diff'
+alias git=hub
+
+#Misc
+alias generate_random_image='mx=4000;my=3000;head -c "$((3*mx*my))" /dev/urandom | convert -depth 8 -size "${mx}x${my}" RGB:- ~/Downloads/random.png'
