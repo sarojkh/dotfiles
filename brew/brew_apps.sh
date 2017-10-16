@@ -79,6 +79,7 @@ declare -a brew_cask_apps=(
   'macvim'
   'yed'
   'microsoft-office'
+  'diffmerge'
   );
 
 # Installing 'brew' if not installed already...
