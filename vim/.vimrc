@@ -35,6 +35,7 @@ Plugin 'Valloric/YouCompleteMe'          " AutoCompletion
 Plugin 'Xuyuanp/nerdtree-git-plugin'     " Git Integration with NERDTree
 Plugin 'ctrlpvim/ctrlp.vim'              " Fuzzy Finder 
 Plugin 'will133/vim-dirdiff'             " Diff utility
+Plugin 'rickhowe/diffchar.vim'          " Diff utility
 " Keep Plugin commands between vundle#begin/end.
 
 " All of your Plugins must be added before the following line
