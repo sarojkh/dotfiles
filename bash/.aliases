@@ -25,7 +25,7 @@ alias rails_annotate="bundle exec annotate --exclude tests,fixtures,factories,se
 alias find_bind_3000="lsof -wni tcp:3000"
 alias find_bind_50000="lsof -wni tcp:50000"
 alias ruby_syntax='find . -name *.rb -exec ruby -c {} \;'
-alias list_rake_tasks='bundle exec rake -T'
+alias list_rake_tasks='bundle exec rake -T -A'
 alias ber='bundle exec rake'
 alias be='bundle exec'
 
