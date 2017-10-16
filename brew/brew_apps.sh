@@ -36,6 +36,7 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 declare -a brew_apps=(
   'bash'
   'git'
+  'hub'
   'diff-so-fancy'
   'wget'
   'rbenv'
