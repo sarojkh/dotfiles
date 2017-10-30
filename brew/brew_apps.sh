@@ -80,6 +80,7 @@ declare -a brew_cask_apps=(
   'yed'
   'microsoft-office'
   'diffmerge'
+  'fork'
   );
 
 # Installing 'brew' if not installed already...
