@@ -3,15 +3,11 @@
 alias open_links="~/Google\ Drive/Code/python/scripts/open_links.py"
 alias gdrive="cd ~/Google\ Drive/"
 alias brew_apps="~/git/dotfiles/brew/brew_apps.sh"
-alias vimn="vim -u NONE"
-alias vim="mvim -v"
-alias vi="mvim -v"
 alias flush_dns="sudo killall -HUP mDNSResponder"
 alias mtop="top -o mem"
 alias ctop="top -o cpu"
-alias mhtop="htop -s PERCENT_MEM"
-alias chtop="htop -s PERCENT_CPU"
 alias mping="ping mit.edu"
+alias gping="ping_gateway"
 alias ll="ls -l"
 
 # Rails/Ruby
@@ -24,7 +20,7 @@ alias rails_test_integration="bundle exec rake test:integration"
 alias rails_annotate="bundle exec annotate --exclude tests,fixtures,factories,serializers"
 alias find_bind_3000="lsof -wni tcp:3000"
 alias find_bind_50000="lsof -wni tcp:50000"
-alias ruby_syntax='find . -name *.rb -exec ruby -c {} \;'
+alias check_ruby_syntax='find . -name *.rb -exec ruby -c {} \;'
 alias list_rake_tasks='bundle exec rake -T -A'
 alias ber='bundle exec rake'
 alias be='bundle exec'
@@ -44,8 +40,6 @@ alias files_changed_in_commit='git diff-tree --no-commit-id --name-only -r'
 alias files_changed_between_commits='files_changed_in_commit'
 alias changes_in_commit='git show --color --pretty=format:%b'
 alias changes_between_commits='changes_in_commit'
-alias gs='git status'
-alias gd='git diff'
 alias git=hub
 
 #Misc

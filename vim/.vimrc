@@ -33,7 +33,8 @@ Plugin 'tpope/vim-fugitive'              " Git integration
 Plugin 'tpope/vim-rails'                 " Rails support-ish
 Plugin 'Valloric/YouCompleteMe'          " AutoCompletion
 Plugin 'Xuyuanp/nerdtree-git-plugin'     " Git Integration with NERDTree
-Plugin 'ctrlpvim/ctrlp.vim'              " Fuzzy Finder 
+Plugin 'ctrlpvim/ctrlp.vim'              " Fuzzy Finder for files
+Plugin 'rking/ag.vim'
 " Keep Plugin commands between vundle#begin/end.
 
 " All of your Plugins must be added before the following line
