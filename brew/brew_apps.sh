@@ -44,6 +44,7 @@ declare -a brew_apps=(
   'grc'
   'bash-completion'
   'z'
+  'thefuck'
   'ack'
   'nodejs'
   'postgresql'
