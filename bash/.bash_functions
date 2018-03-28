@@ -32,3 +32,8 @@ function exec_specs_modified_in_branch() {
 function list_specs_modified_in_branch() {
   git whatchanged --name-only --pretty="" origin..HEAD | grep spec | grep -v vcr_cassettes | grep -v factories | sort -ru
 }
+
+function grep_and_kill() {
+  search_term=$1
+  ps aux | grep $1 | awk '{print $2}' | xargs kill -9
+}
