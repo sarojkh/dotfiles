@@ -8,6 +8,7 @@ alias mping="ping mit.edu"
 alias gping="ping_gateway"
 alias ll="ls -l"
 alias grep="grep -v grep | grep"
+alias list_functions="declare -f"
 
 # Rails/Ruby
 #alias rm_pg_pid="rm /usr/local/var/postgres/postmaster.pid"

@@ -4,8 +4,8 @@ function hello_world(){
   echo 'Hello World'
 }
 
-# Syntax: run <number_of_times> <command>
-function run() {
+# Syntax: repeat <number_of_times> <command>
+function repeat() {
     number=$1
     shift
     for n in $(seq $number); do
@@ -35,5 +35,5 @@ function list_specs_modified_in_branch() {
 
 function grep_and_kill() {
   search_term=$1
-  ps aux | grep $1 | awk '{print $2}' | xargs kill -9
+  ps aux | grep $1 | awk '{print $2}' | xargs kill
 }
