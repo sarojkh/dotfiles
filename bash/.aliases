@@ -24,6 +24,7 @@ alias check_ruby_syntax='find . -name *.rb -exec ruby -c {} \;'
 alias list_rake_tasks='bundle exec rake -T -A'
 alias ber='bundle exec rake'
 alias be='bundle exec'
+alias clear_all_rails_logs="LOGS=all bin/rake log:clear"
 
 #Rcg
 alias rec_ber="rails s -p50000"
