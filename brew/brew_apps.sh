@@ -55,6 +55,10 @@ declare -a brew_apps=(
   );
 
 declare -a brew_cask_apps=(
+  'aware'
+  'spectacle'
+  'spectacle'
+  'numi'
   'yujitach-menumeters'
   'iterm2'
   'caffeine'

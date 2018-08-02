@@ -66,13 +66,4 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
-# Put the symlinks of apps installed by brew-cask in '/Applications/' instead of
-# default location of '~/Applications/'.
-# For more info look in 'man brew-cask'.
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-export PATH="/usr/local/sbin:$PATH"
-export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
-export PATH="/usr/local/opt/v8-315/bin:$PATH"
-export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
-
-source /usr/local/etc/profile.d/z.sh
+source ~/.path_exports

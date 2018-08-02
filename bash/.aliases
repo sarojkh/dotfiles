@@ -9,6 +9,9 @@ alias gping="ping_gateway"
 alias ll="ls -l"
 alias grep="grep -v grep | grep"
 alias list_functions="declare -f"
+alias myisp='curl ipinfo.io'
+alias mylip="ifconfig en0 | grep 'inet[ ]' | awk '{print $2}'"
+alias myrip="netstat -nr | grep default | head -n1 | awk '{print $2}'"
 
 # Rails/Ruby
 #alias rm_pg_pid="rm /usr/local/var/postgres/postmaster.pid"
@@ -20,6 +23,7 @@ alias rails_test_integration="bundle exec rake test:integration"
 alias rails_annotate="bundle exec annotate --exclude tests,fixtures,factories,serializers"
 alias find_bind_3000="lsof -wni tcp:3000"
 alias find_bind_50000="lsof -wni tcp:50000"
+alias find_bind_8080="lsof -wni tcp:8080"
 alias check_ruby_syntax='find . -name *.rb -exec ruby -c {} \;'
 alias list_rake_tasks='bundle exec rake -T -A'
 alias ber='bundle exec rake'
@@ -28,13 +32,13 @@ alias clear_all_rails_logs="LOGS=all bin/rake log:clear"
 
 #Rcg
 alias rec_ber="rails s -p50000"
-alias rec_sber="bundle exec thin start -p 50000 --ssl --ssl-verify --ssl-key-file $HOME/.ssl/server.key --ssl-cert-file $HOME/.ssl/server.crt"
+alias rec_sber_thin="bin/rails_ssl"
+alias rec_sber_puma="puma --preload -b 'ssl://127.0.0.1:50000?key=$HOME/.ssl/server.key&cert=$HOME/.ssl/server.crt'"
+alias checkout_all_locale_but_en="git checkout config/locales/en-GB.yml config/locales/fr.yml config/locales/zh-TW.yml"
 
 # OSX Misc
 alias dock_right="defaults write com.apple.dock orientation -string 'right' && defaults write com.apple.dock tilesize -int 16 && killall Dock"
 alias dock_bottom="defaults write com.apple.dock orientation -string 'bottom' && defaults write com.apple.dock tilesize -int 24 && killall Dock"
-alias show_hidden_files='defaults write com.apple.finder AppleShowAllFiles YES && killall Finder'
-alias hide_hidden_files='defaults write com.apple.finder AppleShowAllFiles NO && killall Finder'
 
 #Git
 alias files_changed_in_commit='git diff-tree --no-commit-id --name-only -r'

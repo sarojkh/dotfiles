@@ -22,7 +22,7 @@ function exec_specs_modified() {
 }
 
 function list_specs_modified() {
-  git status | grep spec | grep -v 'vcr_cassettes' | grep -v 'factories' | grep -v 'shared_examples' | grep 'modified:' | cut -d: -f2-
+  git status | grep spec | grep -v 'vcr_cassettes\|factories\|shared_examples\|spec_helper\|split_configuration' | grep 'modified:' | cut -d: -f2-
 }
 
 function exec_specs_modified_in_branch() {
@@ -30,10 +30,22 @@ function exec_specs_modified_in_branch() {
 }
 
 function list_specs_modified_in_branch() {
-  git whatchanged --name-only --pretty="" origin..HEAD | grep spec | grep -v vcr_cassettes | grep -v factories | sort -ru
+  git whatchanged --name-only --pretty="" origin..HEAD | grep spec | grep -v 'vcr_cassettes\|factories\|spec_helper\|shared_examples\|split_configuration' | sort -ru
+}
+
+function list_files_modified_in_branch() {
+  git whatchanged --name-only --pretty="" origin..HEAD 
 }
 
 function grep_and_kill() {
   search_term=$1
   ps aux | grep $1 | awk '{print $2}' | xargs kill
+}
+
+function log_ip() {
+  touch ~/.log_ip.txt
+  echo "****************" >> ~/.log_ip.txt
+  date >> ~/.log_ip.txt
+  myisp >> ~/.log_ip.txt
+  echo "****************" >> ~/.log_ip.txt
 }
