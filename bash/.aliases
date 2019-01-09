@@ -45,7 +45,6 @@ alias files_changed_in_commit='git diff-tree --no-commit-id --name-only -r'
 alias files_changed_between_commits='files_changed_in_commit'
 alias changes_in_commit='git show --color --pretty=format:%b'
 alias changes_between_commits='changes_in_commit'
-alias git=hub
 
 #Misc
 alias generate_random_image='mx=4000;my=3000;head -c "$((3*mx*my))" /dev/urandom | convert -depth 8 -size "${mx}x${my}" RGB:- ~/Downloads/random.png'

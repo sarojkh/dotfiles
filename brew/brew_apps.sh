@@ -40,42 +40,36 @@ declare -a brew_apps=(
   'diff-so-fancy'
   'wget'
   'rbenv'
+  'cmake'
   'tree'
   'grc'
   'bash-completion'
-  'z'
   'bat'
   'thefuck'
   'ag'
+  'fd'
+  'fzf'
+  'redis'
+  'imagemagick'
   'nodejs'
-  'postgresql'
-  'cmake'
-  'htop'
   'speedtest-cli'
-  'macvim --with-override-system-vim'
   );
 
 declare -a brew_cask_apps=(
   'aware'
   'spectacle'
-  'spectacle'
-  'numi'
   'yujitach-menumeters'
   'iterm2'
   'caffeine'
   'google-chrome'
+  'chromedriver'
   'google-backup-and-sync'
-  'flux'
-  'filezilla'
-  'etrecheck'
   'the-unarchiver'
   'transmission'
   'firefox'
   'skype'
   'slack'
   'vlc'
-  'android-file-transfer'
-  'unetbootin'
   'appcleaner'
   'viber'
   'teamviewer'
@@ -84,9 +78,10 @@ declare -a brew_cask_apps=(
   'rubymine'
   'macvim'
   'yed'
-  'microsoft-office'
-  'diffmerge'
   'fork'
+  '1password'
+  'libreoffice'
+  'microsoft-office'
   );
 
 # Installing 'brew' if not installed already...
@@ -108,9 +103,6 @@ printf '\nUpgrading both brew formulaes and casks...\n'
 printf '\nRunning `brew upgrade --all`...\n'
 brew upgrade
 
-printf '\nRunning brew cleanup...\n'
-brew cleanup
-
 printf '\nThe script will attempt to install the following brew apps...\n'
 for i in "${brew_apps[@]}"
 do
@@ -124,9 +116,6 @@ do
   printf '\n'
 done
 
-printf '\nRunning brew cask cleanup...\n'
-brew cask cleanup
-
 printf '\nThe script will attempt to install the following brew cask apps...\n'
 for i in "${brew_cask_apps[@]}"
 do
@@ -139,5 +128,8 @@ do
   brew cask install $i
   printf '\n'
 done
+
+printf '\nRunning brew cleanup...\n'
+brew cleanup
 
 
