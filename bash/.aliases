@@ -48,3 +48,4 @@ alias changes_between_commits='changes_in_commit'
 
 #Misc
 alias generate_random_image='mx=4000;my=3000;head -c "$((3*mx*my))" /dev/urandom | convert -depth 8 -size "${mx}x${my}" RGB:- ~/Downloads/random.png'
+alias generate_file_of_certain_size='dd if=/dev/zero of=file.txt count=1024 bs=1024' # The file size is determined by multiplying count and bs. In this case, it creates an 1MB file.
