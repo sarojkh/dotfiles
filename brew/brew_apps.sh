@@ -58,7 +58,7 @@ declare -a brew_apps=(
 declare -a brew_cask_apps=(
   'aware'
   'spectacle'
-  'yujitach-menumeters'
+  'menumeters'
   'iterm2'
   'caffeine'
   'google-chrome'
