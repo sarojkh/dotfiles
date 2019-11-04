@@ -34,7 +34,7 @@ alias clear_all_rails_logs="LOGS=all bin/rake log:clear"
 alias rec_ber="rails s -p50000"
 alias rec_sber_thin="bin/rails_ssl"
 alias rec_sber_puma="puma --preload -b 'ssl://127.0.0.1:50000?key=$HOME/.ssl/server.key&cert=$HOME/.ssl/server.crt'"
-alias checkout_all_locale_but_en="git checkout config/locales/en-GB.yml config/locales/fr.yml config/locales/zh-TW.yml"
+alias checkout_all_locale_but_en="git checkout config/locales/en-GB.yml config/locales/fr.yml config/locales/zh-TW.yml config/locales/ar.yml"
 
 # OSX Misc
 alias dock_right="defaults write com.apple.dock orientation -string 'right' && defaults write com.apple.dock tilesize -int 16 && killall Dock"
