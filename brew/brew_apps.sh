@@ -57,6 +57,8 @@ declare -a brew_apps=(
 
 declare -a brew_cask_apps=(
   'aware'
+  'authy'
+  'noisy'
   'spectacle'
   'menumeters'
   'iterm2'
