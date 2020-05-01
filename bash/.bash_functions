@@ -49,3 +49,42 @@ function log_ip() {
   myisp >> ~/.log_ip.txt
   echo "****************" >> ~/.log_ip.txt
 }
+
+function ssm_start_session {
+# Courtesy: https://gist.github.com/civitaspo/128062e89733edd777b011c1e08b8272
+
+if [ -n "$1" ]; then
+  cat <<EOS
+[NAME] $(basename $0) -- A Tool To Start Session With AWS Sessios Manager
+[SYNOPSIS]
+    $(basename $0)
+[NOTE]
+    - 'session-manager-plugin' has to be installed (See. https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html).
+EOS
+
+  exit 1
+fi
+
+set -eu
+
+INSTANCE_ID="$(
+    aws ec2 describe-instances \
+        | jq -cr '.Reservations[].Instances[]
+                    | select(.State.Name == "running")
+                    | .InstanceId + " (" + 
+                    ( [.Tags[] | .Key + ":" + .Value]
+                        | sort
+                        | join(", ")) + ")"' \
+        | peco \
+        | cut -d' ' -f1
+)"
+if [ -z "$INSTANCE_ID" ]; then
+  echo "$(date +'%Y-%m-%d %H:%M:%S %z') [ERROR] Unable to fetch any instance."
+  exit 1
+fi
+
+exec aws ssm start-session --target $INSTANCE_ID
+
+}
+
+
