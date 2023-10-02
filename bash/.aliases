@@ -2,8 +2,6 @@
 
 alias brew_apps="~/git/dotfiles/brew/brew_apps.sh"
 alias flush_dns="sudo killall -HUP mDNSResponder"
-alias mtop="top -o mem"
-alias ctop="top -o cpu"
 alias mping="ping mit.edu"
 alias gping="ping_gateway"
 alias ll="ls -l"
